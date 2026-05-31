@@ -5,7 +5,7 @@ WORKDIR /app
 # Copy Maven wrapper & pom from Backend folder
 COPY Backend/.mvn/ .mvn
 COPY Backend/mvnw Backend/pom.xml ./
-RUN chmod +x mvnw
+RUN sed -i 's/\r$//' mvnw && chmod +x mvnw
 
 # Copy Backend source code and build package
 COPY Backend/src ./src

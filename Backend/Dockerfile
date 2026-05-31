@@ -5,7 +5,7 @@ WORKDIR /app
 # Copy Maven wrapper & dependencies pom
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
-RUN chmod +x mvnw
+RUN sed -i 's/\r$//' mvnw && chmod +x mvnw
 
 # Copy source code and build package
 COPY src ./src
